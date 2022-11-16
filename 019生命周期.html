@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .selected{
+            color:skyblue
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 可以监听对应按键的键盘事件:
+            trim: 自动去除输入内容前后的空格
+        -->
+        <input type="text" v-model.trim="text" >
+        <p>{{text.length}}</p>
+    </div>
+
+    <button onclick="destory()">销毁</button>
+    <script>
+        var n = 1;
+
+
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                // 
+                text:"abc"
+            },
+            beforeCreate() {
+                console.log(this);
+                console.log(this.text);
+                console.log(this.fn);
+                console.log(this.$el);
+            },
+            created() {
+                console.log(this.text);
+                console.log(this.fn);
+                console.log(this.$el);
+            },
+            beforeMount() {
+                console.log(this.$el);
+            },
+            mounted() {
+                console.log(this.$el);
+                this.timer = setInterval(()=>console.log(++n),1000)
+            },
+            beforeUpdate() {
+                console.log("beforeUpdate")
+            },
+            updated() {
+                console.log("updated") 
+            },
+            beforeDestroy() {
+                console.log("beforeDestroy")
+                // clearInterval(this.timer)
+            },
+            destroyed() {
+                clearInterval(this.timer)
+                console.log(this.text)
+            },
+            methods:{
+                fn(){
+
+                }
+            },
+        });
+
+        function destory(){
+            console.log("des");
+            vm.$destroy();
+        }
+
+        // let vNode = {
+        //     el:"div",
+        //     attr:[{id:"#app"}],
+        // }
+
+        // function creatElement(vNode){
+        //     let el =  document.createElement(vNode.el);
+        //     if(vNode.attr){
+        //         vNode.attr.forEach(element => {
+        //             for(let key in element){
+        //                 el[key]= element[key];
+        //             }
+        //         });
+        //     }
+        //     return  el;
+        // }
+
+        // console.log(creatElement(vNode))
+    </script>
+</body>
+</html>

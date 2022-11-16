@@ -1,0 +1,60 @@
+.search {
+    width: 100%;
+    height: 100%;
+    padding-top: 0.2rem;
+}
+
+.search .ipt {
+    width: 90%;
+    background-color: #f4f4f4;
+    height: .6rem;
+    line-height: .6rem;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: .5rem;
+    position: relative;
+}
+
+.search .ipt input {
+    background-color: #f4f4f4;
+    width: 90%;
+    height: 60%;
+    position: absolute;
+    left: .5rem;
+    top: .15rem;
+    right: 0;
+    bottom: 0;
+    border: none;
+    font-size: .3rem;
+    outline: none;
+}
+
+.search .ipt .icon {
+    background:url('/static/img/search.png') no-repeat;
+    width:.3rem;
+    height:.3rem;
+    display:inline-block;
+    background-size:cover;
+    position:absolute;
+    top:.15rem;
+    left:.15rem;
+}
+.searchhot span{
+    font-size:.2rem;
+    display: inline-block;
+    border:1px solid #888;
+    border-radius: .5rem;
+    padding:.15rem;
+    margin:.15rem;
+}
+
+.songlist .item .left{
+    font-size:.3rem;
+    width:.5rem;
+}
+.songlist .item .middle{
+    flex:1;
+}
+.songlist .item:nth-child(-n+3) .left{
+    color:#f00;
+}

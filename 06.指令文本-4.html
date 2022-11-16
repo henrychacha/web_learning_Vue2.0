@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1加载引入vue 核心文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 2.创建一个容器 -->
+    <div id="app">
+        <ul>
+            <!-- <li>eat</li>
+            <li>sleep</li>
+            <li>kit doudou</li> -->
+
+            <!-- 
+
+                v-for="(项目名称,索引) in 被遍历的数据 "
+                项目名称 是自定义的
+             -->
+            <li v-for="(item,index) in todos" :key="index">{{index}}-{{item}}</li>
+        </ul>
+
+        <ul>
+            <!--  v-for="(value,key) in 被遍历的数据 " -->
+            <li v-for="(value,key) in stu">{{key}}:{{value}}</li>
+        </ul>
+    </div>
+    <script>
+        // 3.实例化vue 根组件
+
+        // Vue函数接受一个配置对象作为参数
+        let vm = new Vue({
+            el:"#app",//element：指定挂载（mount）元素
+            // data： 数据对象
+            data:{
+               todos:["eat","sleep","kit doudou"],
+               stu:{
+                name:"jack",
+                age:18
+               }
+            },
+
+        });
+
+
+
+        var arr = ["eat","sleep","kit doudou"];
+
+        for(var todo of arr){
+            console.log(todo);
+        }
+    </script>
+</body>
+</html>

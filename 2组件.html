@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <v-item></v-item>
+       
+    </div>
+
+    <!-- 模板 标签，不知直接渲染在页面中  -->
+    <template id="box">
+        <div>
+            <div>全局注册的组件</div>
+            <div>全局注册的组件2</div>
+            <button>{{count}}</button>
+        </div>
+    </template>
+    <script>
+
+        // 组件
+
+        /*
+        @params1:组件名称
+        @params2:组件配置对象
+
+
+        template：组件模板
+
+
+            组件名称: 1. 可以是驼峰，使用需要写成 - 连接
+                      2.名字必须式多单词
+
+
+            1.组件模板必须拥有唯一根元素
+            2.data 必须是函数带返回值的形式
+        */ 
+        Vue.component("v-item",{
+            // 指定 id 为box 的template 内的 html 结构作为该组件的模板
+            template:"#box" ,
+            data:{
+                
+            },
+            methods:{
+                fn(){
+                    this.count++;
+                }
+            }
+        })
+
+        
+
+        new Vue({
+            el:"#app",
+            data:{
+               
+            }, 
+            components:{
+                baseTitle:{
+                    template:`
+                        <h2>基本标题</h2>
+                    `
+                }
+            }   
+        });
+
+    </script>
+</body>
+</html>

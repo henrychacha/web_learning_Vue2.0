@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">    
+        <p><input type="text" v-model="price" ></p>
+        <p><input type="text" v-model="count" ></p>
+        <p>{{totle}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                count:1,
+                price:200
+            },
+            computed: {
+                totle:{
+                    //获取 ,需要读取totle 的值 ，该函数会触发，
+                    // 相关联的data 变化就会执行
+                    get(){
+                        return this.count*this.price;
+                    },
+                    // 设置，直接赋值totle，该函数就会触发
+                    set(val){
+                        console.log(val)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

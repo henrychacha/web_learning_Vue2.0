@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <base-title></base-title>
+        <v-item></v-item>
+        <v-item></v-item>
+
+        <h2><v-item></v-item></h2>
+
+        <!-- <vButton></vButton> -->
+        <v-button></v-button>
+
+        <!-- <button></button> -->
+    </div>
+    <script>
+
+        // 组件
+
+        /*
+        @params1:组件名称
+        @params2:组件配置对象
+
+
+        template：组件模板
+
+
+            组件名称: 1. 可以是驼峰，使用需要写成 - 连接
+                      2.名字必须式多单词
+        */ 
+        Vue.component("v-item",{
+            template:`
+                <div>全局注册的组件</div>
+                <div>全局注册的组件2</div>
+            `
+        })
+
+        Vue.component("vButton",{
+            template:`
+                <button>点击</button>
+            `
+        })
+
+        // Vue.component("button",{
+        //     template:`
+        //         <button>点击1</button>
+        //     `
+        // })
+
+        new Vue({
+            el:"#app",
+            data:{
+               
+            }, 
+            components:{
+                baseTitle:{
+                    template:`
+                        <h2>基本标题</h2>
+                    `
+                }
+            }   
+        });
+
+    </script>
+</body>
+</html>

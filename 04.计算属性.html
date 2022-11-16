@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{newMsg}}</p>
+       
+        <p><input type="text" v-model="msg" ></p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"abcdefg",
+                newMsg:""
+            },
+            mounted() {
+                if(this.msg.length>5){
+                    this.newMsg = this.msg.split("").reverse().join("")
+                }else{
+                    this.newMsg = this.msg;
+                }
+            },
+            watch: {
+                msg(val){
+                    if(val.length>5){
+                        this.newMsg = val.split("").reverse().join("")
+                    }else{
+                        this.newMsg = val;
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>

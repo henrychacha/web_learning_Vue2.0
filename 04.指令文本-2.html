@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1加载引入vue 核心文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 2.创建一个容器 -->
+    <div id="app">
+        <p v-if="userName"> 欢迎 {{userName}}</p>  
+         <!--不要再v-if 和v-else 中间插入其它内容  -->
+        <!-- <div>插入文本</div> -->
+        <p v-else>请登录</p> 
+
+        <!-- <p>{{3>1?3:1}}</p> -->
+        <!-- <p>{{true?3:1}}</p> -->
+        <p>{{userName?'欢迎'+userName:"请登录"}}</p>
+
+
+
+        <!-- v-else-if  和v-if 类似 -->
+        <p v-if="score>=90">优</p>
+        <p v-else-if="score>=80">良</p>
+        <p v-else-if="score>=60">合格</p>
+        <p v-else>不合格</p>
+    </div>
+    <script>
+        // 3.实例化vue 根组件
+        console.log(Vue);
+
+        // Vue函数接受一个配置对象作为参数
+        let vm = new Vue({
+            el:"#app",//element：指定挂载（mount）元素
+            // data： 数据对象
+            data:{
+               userName:"家炉",
+               score:91
+            },
+
+        })
+    </script>
+</body>
+</html>

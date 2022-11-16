@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1.引入文件 -->
+    <!-- 核心库 -->
+    <script src="./react.development.js"></script>
+    <!-- DOM 操作相关，和虚拟dom 相关 -->
+    <script src="./react-dom.development.min.js"></script>
+    <!--  转义jsx 语法 -->
+    <script src="./babel.min.js"></script>
+</head>
+<body>
+    <!-- 2.创建容器 -->
+
+    <div id="app"></div>
+
+
+    <script type="text/babel">
+    //  type text/babel 声明内部使用的是jsx 语法
+
+        function add(){
+            return 1+1;
+        }
+
+        function abc(){
+            return (
+                <i>abc</i>
+            )
+        }
+        
+        // 执行函数
+        let el = (<h1 id="box">
+            <span>{add()}</span>
+            <span>{abc()}</span>
+        </h1>);
+        console.log(el);
+
+        // 3.将虚拟DOM渲染到页面中
+        ReactDOM.render(el,document.getElementById("app"));
+    </script>
+</body>
+</html>

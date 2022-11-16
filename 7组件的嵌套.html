@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item {
+            width: 360px;
+            border: 1px solid black;
+            background-color: #eee;
+            padding: 20px;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 指定一个自定义属性,属性的名称就是props 的名称 ，值就是需要被传递的值-->
+        <v-item v-for="item in itemsList" :box="item"></v-item>
+
+    </div>
+
+    <!-- 模板 标签，不知直接渲染在页面中  -->
+    <template id="box">
+        <div class="item">
+            <v-img-box :pic="box.pic"></v-img-box>
+            <ul>
+            <v-news-list :items= "box.items"></v-news-list>
+        </ul>
+        </div>
+    </template>
+    <script>
+
+        // 组件
+
+        /*
+        @params1:组件名称
+        @params2:组件配置对象
+
+
+        template：组件模板
+
+
+            组件名称: 1. 可以是驼峰，使用需要写成 - 连接
+                      2.名字必须式多单词
+
+
+            1.组件模板必须拥有唯一根元素
+            2.data 必须是函数带返回值的形式
+        */
+        Vue.component("v-item", {
+            // 指定 id 为box 的template 内的 html 结构作为该组件的模板
+            template: "#box",
+            // 2.使用props 属性 接受 指定的 prop 
+            // 数组形式 ，每一个 字符串都是一个prop 的名称，使用起来就行data 一样
+            props: ["box"],
+            // data(){
+            //     return {
+            //         pic:"http://www.ujiuye.com/uploadfile/2020/0329/20200329033305219.jpg"
+
+            //     }
+            // }
+        })
+
+        Vue.component("v-img-box",{
+            props:["pic"],
+            template:`
+                <div>
+                    <img :src="pic" alt="">
+                </div>`
+        })
+
+        Vue.component("v-news-list",{
+            props:["items"],
+            template:`
+            <ul>
+                <li v-for="item in items"><a :href="item.url">{{item.title}}</a></li>
+            </ul>
+            `
+        })
+
+        new Vue({
+            el: "#app",
+            data: {
+                itemsList: [{
+                    pic: "http://www.ujiuye.com/uploadfile/2020/0329/20200329033305219.jpg",
+                    items: [
+                        { url: 'http://www.baidu.com', title: 'baidu' },
+                        { url: 'http://www.ujiuye.com/', title: 'yjiuye' }
+                    ]
+                }, {
+                    pic: "http://www.ujiuye.com/uploadfile/2019/0809/20190809052044680.jpg",
+                    items: [
+                        { url: 'https://www.sina.com.cn/', title: 'sina' },
+                        { url: 'https://www.163.com/', title: 'wangyi' }]
+                }]
+            },
+            components: {
+                baseTitle: {
+                    template: `
+                        <h2>基本标题</h2>
+                    `
+                }
+            },
+        });
+
+    </script>
+</body>
+
+</html>

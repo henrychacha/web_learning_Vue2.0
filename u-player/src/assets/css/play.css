@@ -1,0 +1,106 @@
+.play{
+    width:100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.play .back{
+    width:.3rem;
+    height:.3rem;
+    border-left:1px solid #fff;
+    border-top:1px solid #fff;
+    transform: rotate(-45deg);
+    position: absolute;
+    top:.3rem;
+    left:.3rem;
+    z-index:10;
+}
+.play .disc {
+    position: relative;
+    height:6rem;
+}
+.play .disc .playtop{
+    position: fixed;
+    width:2rem;
+    height:2.5rem;
+    left:48%;
+    top:0;
+    transform: rotate(-15deg);
+    transform-origin: 0 0;
+    transition:transform 2s linear;
+    z-index:999;
+}
+.play .disc .discbox{
+    width:5rem;
+    height:5rem;
+    background:url('/static/img/disc-ip6.png');
+    background-size:5rem;
+    position: absolute;
+    top:1rem;
+    left:.7rem;
+}
+.play .disc .discbox .songimg{
+    width:3.2rem;
+    height:3.2rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.9rem;
+    left: .9rem;
+}
+
+
+.play .disc .discbox .songmove{
+    animation: circle 15s linear infinite;
+}
+.play .disc .discbox .songstop{
+    animation: circle 15s linear infinite;
+    animation-play-state: paused;
+}
+
+@keyframes circle {
+    0%{
+        transform: rotate(0deg)
+    }
+    100%{
+        transform: rotate(360deg)
+    }
+}
+
+.play .disc .discbox .icon{
+    display: inline-block;
+    height: .8rem;
+    width: 1rem;
+    background: url("/static/img/list_sprite.png") no-repeat;
+    position: absolute;
+    top:40%;
+    left:42%;
+}
+.play .songlyric{
+    margin-top:0.4rem;
+    text-align: center;
+}
+.play .songlyric .title{
+    font-size:.3rem;
+    color:#fff;
+}
+.play .songlyric .lyric{
+    margin-top: .2rem;
+    height: 3rem;
+    overflow: hidden;
+}
+
+.play .songlyric .lyric .lyric_box {
+    text-align: center;
+    transition: 0.5s;
+}
+
+.play .songlyric .lyric .lyric_box p {
+    font-size: .3rem;
+    color: #fff;
+    height: .6rem;
+    line-height: .6rem;
+}
+.play .lyric_box .active{
+    color:#66CD00 !important;
+}

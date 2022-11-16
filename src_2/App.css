@@ -1,0 +1,12 @@
+@import '~antd/dist/antd.css';
+.App {
+  text-align: center;
+}
+
+.red{
+  color:red;
+}
+h3{
+  height: 300px;
+  background-color: skyblue;
+}

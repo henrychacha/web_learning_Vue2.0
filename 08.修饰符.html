@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form action="" @submit.prevent="fn">
+            <p><label for="">姓名</label><input type="text" v-model="stuName"></p>
+            <p><label for="">年龄</label><input type="text" v-model="stuAge"></p>
+            <p><label for="">性别</label><input type="radio" v-model="stuSex" value="男">:男<input type="radio" v-model="stuSex" value="女">:女</p>
+            <input type="submit" value="添加">
+        </form>
+        <table border="1" width="300">
+            <tr>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+            </tr>
+            <!--  -->
+            <tr v-for="item in stuInfo">
+                <td>{{item.stuName}}</td>
+                <td>{{item.stuAge}}</td>
+                <td>{{item.stuSex}}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                // 表单输入相关
+                stuName:"",
+                stuAge:"",
+                stuSex:"",
+                // 储存学员信息的数组
+                stuInfo:[{
+                    stuName:"旺旺",
+                    stuAge:18,
+                    stuSex:"男"
+                },{
+                    stuName:"付坤",
+                    stuAge:16,
+                    stuSex:"男"
+                }]
+            },
+            methods:{
+                fn(e){
+                    // 通过 v-model 指令 获取输入值
+                    //console.log(this.stuName);e
+                   let {stuName,stuSex,stuAge} = this;
+                
+                    // 生成学生信息对象
+                   let stu = {
+                    stuName:stuName,
+                    stuSex,
+                    stuAge
+                   }
+
+                    // 推入数组中
+                   this.stuInfo.push(stu);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

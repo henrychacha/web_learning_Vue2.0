@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cls1{
+            background-color: skyblue;
+        }
+        .bg1{
+            background-color: pink;
+        }
+        .color1{
+            color:lightgreen;
+        }
+    </style>
+    <!-- 1加载引入vue 核心文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 2.创建一个容器 -->
+    <div id="app">
+        <!-- <ul>
+            <li v-for="item in webs"><a v-bind:href="item.url" class="cls1">{{item.webName}}</a></li>
+        </ul> -->
+
+        <!-- <ul>
+            <li v-for="item in webs"><a v-bind:href="item.url" v-bind:class="'bg1 '+cls2">{{item.webName}}</a></li>
+        </ul> -->
+
+        <ul>
+            <!-- 索引为偶数的项 会拥有 cls1 数据携带的类名 bg1 -->
+            <li v-for="(item,index) in webs"><a v-bind:href="item.url" v-bind:class="index%2==0?cls1:''">{{item.webName}}</a></li>
+        </ul> 
+
+        <ul>
+            <!-- 可以写成对象形式： key=>类名  值->boolean 值，决定该类名是否生效-->
+            <li v-for="(item,index) in webs"><a v-bind:href="item.url" v-bind:class="{bg1:index%2==0,color1:flag}">{{item.webName}}</a></li>
+        </ul> 
+
+        <ul>
+            <!-- -->
+            <li v-for="(item,index) in webs"><a v-bind:href="item.url" v-bind:class="obj">{{item.webName}}</a></li>
+        </ul> 
+
+
+        <ul>
+            <!-- 前面是判断条件 ，后面是需要生效的数据cls1 的类名 bg1 或者直接写类名 color1 -->
+            <li v-for="(item,index) in webs"><a v-bind:href="item.url" v-bind:class="[index%2==0?cls1:'',flag?'color1':'']">{{item.webName}}</a></li>
+        </ul> 
+    </div>
+    <script>
+        // 3.实例化vue 根组件
+
+        // Vue函数接受一个配置对象作为参数
+        let vm = new Vue({
+            el: "#app",//element：指定挂载（mount）元素
+            // data： 数据对象
+            data: {
+                webs: [{
+                    url: "https://www.baidu.com",
+                    webName: "baidu"
+                }, {
+                    url: "https://www.sina.com.cn",
+                    webName: "sina"
+                }],
+                // cls1 ,cls2 类名字符串
+                cls1:"bg1",
+                cls2:"color1",
+                flag:true,
+                obj:{bg1:true,color1:false}
+            },
+        });
+    </script>
+</body>
+
+</html>

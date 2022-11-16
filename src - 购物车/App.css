@@ -1,0 +1,19 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.cart-box{
+  width: 500px;
+  border: 1px solid #ccc;
+}
+ul{
+  list-style: none;
+}
+li{
+  display: flex;
+  
+}
+li>span{
+  flex-grow: 1;
+  text-align: center;
+}

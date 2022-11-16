@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>￥：{{price}}</p>
+        <p>￥：{{price1}}</p>
+
+        <p>{{price1|changeToPrice}}</p>
+        <p>{{msg|upper}}</p>
+        <h3>带参数</h3>
+        <p>{{msg|upper1(3)}}</p>
+        <p>{{d}}</p>
+        <p>2020-07-22</p>
+    </div>
+
+    <div id="app2">
+        <p>{{msg|upper}}</p>
+    </div>
+    <script>
+        // 全局定义的过滤器，所有实例都可以使用
+        Vue.filter("upper",(val)=>{
+            return  val.charAt(0).toUpperCase()+ val.slice(1);
+        })
+
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                price:200,
+                price1:299,
+                msg:"helloworld",
+                d:Date.now()
+            },
+            // 局部定义过滤器，只有当前实例可以使用
+            filters:{
+                // 过滤器 函数的第一个参数 是被过滤的数据
+                // 第二参数开始才是过滤器接受的参数
+                changeToPrice(val){
+                    // 经过过滤后最终的文本
+                    return "￥：" + val;
+                },
+                upper1(val,n){
+                    console.log(n)
+                    return  val.slice(0,n)+val.charAt(n).toUpperCase()+ val.slice(n+1);
+                }
+            },
+            methods: {
+                
+            },
+        })
+
+        new Vue({
+            el:"#app2",
+            data:{
+                msg:"helloworld"
+            }
+        })
+    </script>
+</body>
+</html>

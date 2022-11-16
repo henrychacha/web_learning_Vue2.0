@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border:3px gold dashed;
+        }
+        .outer .inner{
+            width: 50px;
+            height: 50px;
+            background-color: skyblue;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- self 事件源是自己才响应 -->
+        <div class="outer" @click.self="outer">
+            <div class="inner" @click="inner" :style="{width:w+'px'}"></div>
+        </div>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                w:50
+            },
+            methods:{
+                // outer 元素上的点击事件
+                outer(){
+                    // console.log("outer")
+                    this.w-=10;
+                },
+                //inner 元素上的点击事件
+                inner(){
+                    // console.log("inner")
+                    this.w+=10;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

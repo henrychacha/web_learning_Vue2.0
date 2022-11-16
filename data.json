@@ -1,0 +1,15 @@
+[{
+    "gooodsId":"001",
+    "gooodsName":"香烟",
+    "price":15,
+    "count":1,
+    "goodsPic":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3155877623,2659659639&fm=26&gp=0.jpg"
+
+},{
+    "gooodsId":"002",
+    "gooodsName":"啤酒",
+    "price":19,
+    "count":12,
+    "goodsPic":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=364940872,3717760142&fm=26&gp=0.jpg"
+
+}]

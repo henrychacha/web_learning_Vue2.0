@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cls1{
+            background-color: skyblue;
+        }
+        .bg1{
+            background-color: pink;
+        }
+        .color1{
+            color:lightgreen;
+        }
+    </style>
+    <!-- 1加载引入vue 核心文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 2.创建一个容器 -->
+    <div id="app">
+        <p style="font-size: 30px;color:red">行间样式</p>
+        <p :style="{color:'red'}">动态style</p>
+        <!-- key: 样式名称 建议写成 驼峰写法， 值 样式值 -->
+        <p :style="{color:r,fontSize:ft}">动态style</p>
+        <!-- 可以将样式对象写到data 中 -->
+        <p :style="styleObj">动态style</p>
+
+        <!-- 数组每一个成员都是一个样式对象 -->
+        <p :style="[styleObj,styleObj1]">动态style</p>
+
+    </div>
+    <script>
+        // 3.实例化vue 根组件
+
+        // Vue函数接受一个配置对象作为参数
+        let vm = new Vue({
+            el: "#app",//element：指定挂载（mount）元素
+            // data： 数据对象
+            data: {
+                r:"red",
+                ft:"30px",
+                styleObj:{
+                    color:"lightgreen"
+                },
+                styleObj1:{
+                    backgroundColor:"pink"
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

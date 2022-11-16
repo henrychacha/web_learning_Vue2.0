@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        全选：
+        <input type="checkbox"  v-model="checked"  @click="fn">
+        <p>checked- {{checked}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                // 可以通过绑定boolean值来 获取和修改 选中状态
+                checked:true
+            },
+            methods:{
+                fn(){
+                    console.log(this.checked)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

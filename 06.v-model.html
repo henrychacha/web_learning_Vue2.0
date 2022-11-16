@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-model 是绑定在 select上的,添加了multiple 属性，也可以实现多选效果 -->
+        <select v-model="city" multiple>
+            <option value="潮汕">潮汕</option>
+            <option value="湛江">湛江</option>
+            <option value="广州">广州</option>
+            <option value="深圳">深圳</option>
+        </select>
+        <p>{{city}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                // 下拉选框绑定 v-model 数据，会和单选框的value 有关联
+                city:[]
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

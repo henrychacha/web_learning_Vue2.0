@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1加载引入vue 核心文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 2.创建一个容器 -->
+    <div id="app">
+        <p>{{1+1}}</p>
+        <p>{{num>0?num:0}}</p>
+        <p>{{welcome()}}</p>
+        <p>{{if(num>0){num
+            }}}</p>
+    </div>
+    <script>
+        // 3.实例化vue 根组件
+        console.log(Vue);
+
+        // Vue函数接受一个配置对象作为参数
+        let vm = new Vue({
+            el:"#app",//element：指定挂载（mount）元素
+            // data： 数据对象
+            data:{
+                msg:"hello vue",
+                num:1,
+            },
+            // vue 实例使用的函数
+            methods:{
+                welcome(){
+                    return "welcome vue"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

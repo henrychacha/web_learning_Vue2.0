@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            margin: 0 10px;
+        }
+    </style>
+    <!-- 1加载引入vue 核心文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 2.创建一个容器 -->
+    <div id="app">
+        <div v-if="seen">
+            <div v-for="i in 9">
+                <!-- 列表渲染和 条件渲染可以同时作用于一个元素，v-for 的优先级高于v-if -->
+                <span v-for="j in 9" v-if="j<=i">{{j}}*{{i}}={{i*j}}</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 3.实例化vue 根组件
+
+        // Vue函数接受一个配置对象作为参数
+        let vm = new Vue({
+            el:"#app",//element：指定挂载（mount）元素
+            // data： 数据对象
+            data:{
+                seen:true
+            },
+        });
+    </script>
+</body>
+</html>

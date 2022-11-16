@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <!-- 单向：数据渲染到视图-->
+        <input type="text" :value="msg">
+        <!-- input 事件：输入事件,视图中修改数据 -->
+        <!-- <input type="text" @input="fn($event)">    -->
+        <!-- $event: 固定写法，vue 中的事件对象 -->
+        <!-- 单向： 视图中修改数据-->
+        <input type="text" @input="msg = $event.target.value">
+
+        <!-- 双向绑定原理-->
+        <input type="text" :value="msg" @input="msg = $event.target.value">
+
+
+        <!-- 语法糖 v-model -->
+        <input type="text" v-model="msg">
+
+
+        <textarea name="" id="" cols="30" rows="10" v-model="msg"></textarea>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"welcome vue"
+            },
+            methods:{
+                fn(e){
+                    console.log(e.target.value);
+                    this.msg = e.target.value;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

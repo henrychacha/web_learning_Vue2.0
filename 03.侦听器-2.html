@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg.a}}</p>
+        <p><input type="text" v-model="msg.a"></p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:{
+                    a:1
+                }
+            },
+            // watch 对象内部定义的是监听属性
+            //Vue提供了watch选项，提供了一个更通用的方法，来响应数据的变化。当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。
+            watch: {
+                msg:{
+                    deep:true,//是否进行深监听（监听复合数据的变化）
+                    // handler 函数就是msg 发生变化会执行的函数
+                    handler(newValue,oldValue){
+                        console.log(newValue,oldValue);
+                        console.log("msg 变化了")
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>

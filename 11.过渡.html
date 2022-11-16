@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1.引入css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            margin: 100px auto;
+            background-color: red;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="seen = !seen">切换显示</button>
+        <div>
+            <transition leave-active-class="animated bounceOut" enter-active-class="animated  rotateIn" >
+                <div v-show="seen" class="box"></div>
+            </transition>
+            <!--  
+
+                添加 leave-active-class 对应离开过渡效果 
+                enter-active-class     对应进入 过渡效果
+                不要忘记 animated 类名
+            -->
+
+            <!-- <transition leave-active-class="animated rotateOutDownRight" enter-active-class="animated  rotateInUpLeft" >
+                <div v-show="seen" class="box"></div>
+            </transition>  -->
+        </div>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+               seen:true
+            },
+            
+        })
+
+
+    </script>
+</body>
+</html>

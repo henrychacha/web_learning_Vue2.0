@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .selected{
+            color:skyblue
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 可以监听对应按键的键盘事件:
+            lazy：修饰符 会使 事件的触发时机变为 change
+        -->
+        <input type="text" v-model.lazy="text" >
+        <p>{{text}}</p>
+    </div>
+    <script>
+
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                text:"abc"
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

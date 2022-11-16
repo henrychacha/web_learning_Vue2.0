@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <v-item count="1"></v-item> -->
+
+        <!-- 静态属性传入的是字符串，动态属性传入的数字才是number类型 -->
+        <v-item :count="10"></v-item>
+
+        <v-item ></v-item>
+    </div>
+    <script>
+
+        // 组件
+
+        /*
+        @params1:组件名称
+        @params2:组件配置对象
+
+
+        template：组件模板
+
+
+            组件名称: 1. 可以是驼峰，使用需要写成 - 连接
+                      2.名字必须式多单词
+
+
+                不能直接修改 props ,变成子组件的data 或者计算属性
+        */ 
+        Vue.component("v-item",{
+            data(){
+                return {
+                    mycount:this.count
+                }
+            },
+            computed: {
+                mycount1(){
+
+                }
+            },
+
+            /* 数组写法和对象写法 */
+            // props:["count"],
+            props:{
+                // 接受 Number 值 名为 count 的prop 不符合会报错
+                // count:Number
+
+                count:{
+                    type:Number, // 类型检查
+                    // default:2,   
+                    // required:true,  // 没有传入count值是不会报错的，除非设定了这个属性
+
+                    // 自己规定特定的条件，不满足条件就报错
+                    validator(val){
+                        return  val>0&&val<9
+                    }
+                }
+            },
+            // template:`
+            //     <div @click='mycount = mycount+1'>{{mycount}}</div>
+            // `,
+            template:`
+                <div @click='count = count+1'>{{count}}</div>
+            `,
+            
+        })
+
+        new Vue({
+            el:"#app",
+            data:{
+               
+            },   
+        });
+
+    </script>
+</body>
+</html>

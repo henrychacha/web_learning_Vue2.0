@@ -1,0 +1,148 @@
+<!--     
+    使用 监听属性 实现 实时计算总价格 功能
+    因为监听会在数据出现变化的时候才调用，所以在第一次渲染的时候不会调用。需要手动在mounted阶段计算一次
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <!-- 1、引入vue -->
+    <script src="js/vue.js"></script>
+
+    <link rel="stylesheet" href="css/demo.css">
+</head>
+
+<body>
+    <div class="box" id="app">
+        <div class="tit">
+            <ul class="t_head">
+                <li></li>
+                <li>猫咪品种</li>
+                <li>单价</li>
+                <li>数量</li>
+                <li>总价</li>
+                <li></li>
+            </ul>
+        </div>
+        <!-- 定义一个容器 -->
+        <div class="t_con">
+            <ul v-for="(item,index) in obj">
+                <li class="check">
+                    <a href="javascript:;"></a>
+                </li>
+                <li class="goods">
+                    <img :src="item.goodsPic" alt="buou">
+                    <span>{{item.goodsName}}</span>
+                </li>
+                <li class="price">{{item.price}}元</li>
+                <li class="num">
+                    <!-- 减 ，index 是传入的参数索引-->
+                    <a href="javascript:;" @click="mul(index)">-</a>
+                    <!-- 输入 -->
+                    <input type="text" class="number" v-model.number="item.count" >
+                    <!-- 加 -->
+                    <a href="javascript:;" @click="item.count++">+</a>
+                </li>
+                <li class="sum">￥{{item.count*item.price}}元</li>
+                <li class="del">
+                    <a href="javascript:;"><img src="./img/del.png" alt="del"></a>
+                </li>
+            </ul>
+        </div>
+        <ul class="t_foot">
+            <li class="ck">
+                <a href="javascript:;" class="checkd"></a>
+                <span class="truech">全选</span>
+                <span class="falsech">取消全选</span>
+            </li>
+            <li class="sumnum">
+                <!-- 总价 -->
+                <p class="money">Total:￥<i>{{totle}}</i>元</p>
+                <p class="all"><a href="javascript:;">结算</a></p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        // 3、实例化vue
+        let vm = new Vue({
+            el: "#app",
+            mounted() {
+                // 应用挂载完毕后，首次计算总价
+                var sum = 0;
+                this.obj.map(item => {
+                    sum += item.count * item.price;
+                })
+                this.totle = sum;
+            },
+            watch: {
+                obj: {
+                    deep: true,
+                    handler() {
+                        //监听数据的变化 计算总价的函数
+                        // console.log("jt");
+                        var sum = 0;
+                        this.obj.map(item => {
+                            sum += item.count * item.price;
+                        })
+                        this.totle = sum;
+                    }
+                }
+            },
+            methods: {
+                // 商品数量减少
+                mul(i) {
+                    if (this.obj[i].count > 1) {
+                        this.obj[i].count--;
+                    }
+                },
+            },
+            data: {
+                totle: 0,
+                obj: [{
+                    "goodsId": "001",
+                    "goodsName": "布偶",
+                    "price": 12000,
+                    "count": 1,
+                    "goodsPic": "./img/buou.jpg"
+
+                }, {
+                    "goodsId": "002",
+                    "goodsName": "金吉拉",
+                    "price": 1900,
+                    "count": 2,
+                    "goodsPic": "./img/jjl.jpg"
+
+                }, {
+                    "goodsId": "003",
+                    "goodsName": "折耳猫",
+                    "price": 3200,
+                    "count": 1,
+                    "goodsPic": "./img/ze.jpg"
+
+                }, {
+                    "goodsId": "004",
+                    "goodsName": "金渐层",
+                    "price": 8500,
+                    "count": 2,
+                    "goodsPic": "./img/jjc.jpg"
+
+                }, {
+                    "goodsId": "005",
+                    "goodsName": "蓝白",
+                    "price": 2300,
+                    "count": 1,
+                    "goodsPic": "./img/lb.jpg"
+
+                }]
+            }
+
+        })
+    </script>
+</body>
+
+</html>

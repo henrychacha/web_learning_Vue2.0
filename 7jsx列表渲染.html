@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1.引入文件 -->
+    <!-- 核心库 -->
+    <script src="./react.development.js"></script>
+    <!-- DOM 操作相关，和虚拟dom 相关 -->
+    <script src="./react-dom.development.min.js"></script>
+    <!--  转义jsx 语法 -->
+    <script src="./babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 2.创建容器 -->
+
+    <div id="app"></div>
+
+
+
+
+    <script type="text/babel">
+
+
+        //  type text/babel 声明内部使用的是jsx 语法
+
+        let stus = [{
+            name:"chaobo",
+            age:19
+        },{
+            name:"xinhua",
+            age:20
+        }]
+        
+        // 使用 数组的map 方法来进行列表渲染，
+        // 返回值就是列表项的结构
+        // 记得加上唯一 key
+
+        // let arr = [<li>chaobo-19</li>,<li>xinhua-20</li>]
+
+        let el = (<h1 id="box">
+            <ul>
+                {stus.map((item,index)=>{
+                    return (
+                        <li key={index}>
+                            <i>{item.name}</i>
+                            -
+                            <b>{item.age}</b>
+                        </li>
+                    )
+                })}
+            </ul>
+        </h1>);
+        console.log(el);
+
+        // 3.将虚拟DOM渲染到页面中
+        ReactDOM.render(el, document.getElementById("app"));
+    </script>
+</body>
+
+</html>

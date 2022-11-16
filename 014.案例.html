@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .selected{
+            color:skyblue
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 可以监听对应按键的键盘事件 -->
+        <input type="text" v-model="text" @keydown.down="down" @keydown.up="up" @keydown.enter="enter" @focus="seen=true" @blur="seen=false" @k>
+        <div class="search" v-show="seen">
+            <ul >
+                <!-- 判断当前的项的索引和选中索引 是否相等来决定是否获取动态样式  -->
+                <li v-for="(item,index) in searchList" :class="index==selectedIndex?'selected':''" >{{item}}</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        /*
+        // 别名
+           1) .enter：回车键
+         2)  .tab：制表键
+         3) .delete：含delete和backspace键
+         4) .esc：返回键
+         5) .space: 空格键
+         6) .up：向上键
+         7) .down：向下键
+         8) .left：向左键
+         9) .right：向右键
+
+
+    // keyCode 也可以作为事件修饰符
+        */ 
+
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                seen:false,
+                searchList:["vue的事件修饰符","vue的指令"],
+                // 记录当前选中列表项的索引
+                selectedIndex:-1,
+                text:""
+            },
+            methods:{
+                down(){
+                    // 选中索引递增
+                    this.selectedIndex++;
+                    // 临界判断 从最后一项回到第一项
+                    if(this.selectedIndex==this.searchList.length){
+                        this.selectedIndex = 0
+                    }
+                },
+                up(){
+                    this.selectedIndex--;
+                    if(this.selectedIndex==-1){
+                        this.selectedIndex = this.searchList.length-1;
+                    }
+                },
+                /* 箭头函数内的 this 不会指向  vue 实例（vm） */
+                
+                // enter:()=>{
+                //     console.log("enter");
+                //     console.log( this)
+                //     // this.searchList.push(this.text);
+                // },
+                // enter 按下的事件函数
+                enter(){
+                    console.log("enter");
+                    // console.log(this);
+                    // 向信息列表 推入
+                    this.searchList.push(this.text);
+                    // 清空输入框文本
+                    this.text = "";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

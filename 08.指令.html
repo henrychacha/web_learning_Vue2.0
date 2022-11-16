@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            margin: 0 10px;
+        }
+    </style>
+    <!-- 1加载引入vue 核心文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 2.创建一个容器 -->
+    <div id="app">
+        <a href="http://www.ujiuye.com">ujiuye</a>
+        <ul>
+            <!-- 需要给 属性绑定动态数据的时候，需要使用 v-bind: -->
+            <li v-for="item in webs"><a v-bind:href="item.url">{{item.webName}}</a></li>
+        </ul>
+        <img v-bind:src="img" alt="">
+        <!-- v-bind: 可以简写成 : -->
+        <img :src="img" alt="">
+    </div>
+    <script>
+        // 3.实例化vue 根组件
+
+        // Vue函数接受一个配置对象作为参数
+        let vm = new Vue({
+            el:"#app",//element：指定挂载（mount）元素
+            // data： 数据对象
+            data:{
+                webs:[{
+                    url:"https://www.baidu.com",
+                    webName:"baidu"
+                },{
+                    url:"https://www.sina.com.cn",
+                    webName:"sina"
+                }],
+                img:"https://t8.baidu.com/it/u=3571592872,3353494284&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1595837566&t=99b6646d9fb3758fd8ad3c1199dc0e7e"
+            },
+        });
+    </script>
+</body>
+</html>

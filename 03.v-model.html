@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox"  v-model="star" name="boy" value="易烊千玺" >：易烊千玺
+        <input type="checkbox"  v-model="star" name="boy" value="王俊凯" >：王俊凯
+        <input type="checkbox"  v-model="star" name="boy" value="王源">：王源
+
+        <p>star- {{star}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                // 多选框绑定 v-model 数据，会和多选框的value 有关联，数据会被储存在 数组中
+                star:[]
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

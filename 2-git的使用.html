@@ -1,0 +1,129 @@
+<!-- 
+        1、在你的Mac上指定的目录下，新建一个“本地仓库”，命令如下： （初始化仓库）
+
+            git init
+
+        结果会创建一个隐藏的.git文件夹 /gitdemo/.git/
+        终端名称会变成 git bash
+
+        $ pwd 
+        显示当前文件夹的绝对路径
+
+        2、进入你的Mac上指定的目录下，进行查看有何变化，发现多了个.git的文件夹（默认是隐藏的），如果在你的Mac上看不到可以执行下面的命令（显示隐藏文件）：
+
+        defaults write com.apple.finder AppleShowAllFiles -bool true
+        不想让你的Mac显示隐藏文件，可以执行如下命令：
+        defaults write com.apple.finder AppleShowAllFiles -bool false   
+
+           在finder中 使用快捷键 cmd + shift + . 可以切换显示隐藏 隐藏文件
+        // 用户不要自己操作.git文件夹
+
+
+        3、配置个人信息（第一次使用）
+
+            配置你的姓名（告诉git上的其他用户你是谁？），命令如下：
+            git config user.name xiewendong
+
+            配置你的电子邮箱（告诉git上的其他用户你的联系方式是？），命令如下：
+            git config user.email android_ls@163.com    
+            
+            配置的信息在./git/config 中可以查看
+            
+            采用上面的命令进行配置是一次性的配置， 只会配置到被管理文件的.git文件夹下，要想一劳永逸，请使用下面的配置方式进行配置：
+            git config --global user.name xiewendong
+            git config --global user.email android_ls@163.com
+ -->
+
+ <!-- 
+     指令
+
+    - 创建文件
+        touch neon.txt
+    - 写内容
+        echo 'hello' > neon.txt
+    - 提交（到暂存区）文件
+        git add neon.txt
+    - 提交（到暂存区）整个目录中的所有文件
+        git add -A
+    - 只提交（到暂存区）修改的内容
+        git add .
+    - 提交（到暂存区）某个文件夹
+        git add abc
+    - 提交（到暂存区）所有js文件
+        git add *.js
+    - 提交（到版本库）
+        git commit -m 'first commit'
+            - m是指定提交的备注信息，可以打中文
+            - 使用时，可以往暂存区添加多个文件，然后一次性提交到版本库
+    - 查看修改 （在没提交到本地仓库前，查看文件变化）
+        git diff neon.txt
+    - 撤销对文件做的修改（在没有提交到缓存区的时候）
+        - git checkout -- neon.txt
+        - git checkout neon.txt  (命令变成创建分支)
+    - 查看日志
+        git log
+    - 查看指定文件的版本库日志
+         git log 文件名 
+    - 回退到上一个版本
+        git reset --hard HEAD^
+            - HEAD^^  回退到上上个版本
+    - 回退到上第几个版本
+        git reset --hard HEAD~整数
+    - 回退到指定版本号
+        git reset --hard 版本号
+    - 查询版本号
+        git reflog
+    - 删除文件
+        rm hello.txt 如何想要在版本库删掉此文件，可以再执行commit命令提交
+ 
+
+-->
+
+  <!-- 
+      检查状态
+       git status
+         反馈还未追踪。因为文件还未被提交commit到仓库或者暂存区
+
+         注：添加之的颜色是红色，代表文件在”工作区“；在执行完“git add 文件名称”之后，文件被添加到“暂存区”，颜色为绿色。（工作区——暂存区——本地仓库）
+
+    在git中，版本号是一个由SHA1生成的哈希值。
+   -->
+
+   <!-- 
+        终端知识补充
+        上下键可以切换之前输入过的的指令
+
+    -->
+
+    <!-- 
+        分支管理
+
+        概念;
+            每一种版本控制系统都以某种类形式支持分支，使用分支一位置可以从开发主线上分离开来，然后在不影响主线的同时继续工作
+            主分支 master （初始化时创建，所有默认操作都在主分支上）
+            开发分支 develop
+            功能分支 feature
+            预发布分支 release
+            bug分支     fixbug
+            其他分支    other
+
+            - 创建分支
+                git branch branchname
+                比如创建开发分支 git branch dev
+            - 查看分支
+                git branch
+                 - *代表当前位于哪个分支
+            - 切换分支
+                git checkout dev
+                    - 切换分支并不会影响工作区
+            - 创建并切换分支
+                git checkout -b dev
+            - 合并分支
+                git merge dev
+            - 查看分支中的文件
+                ls
+            - 删除分支
+                git branch -d dev
+            
+
+     -->

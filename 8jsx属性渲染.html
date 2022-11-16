@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .red{
+            color:red;
+        }
+    </style>
+    <!-- 1.引入文件 -->
+    <!-- 核心库 -->
+    <script src="./react.development.js"></script>
+    <!-- DOM 操作相关，和虚拟dom 相关 -->
+    <script src="./react-dom.development.min.js"></script>
+    <!--  转义jsx 语法 -->
+    <script src="./babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 2.创建容器 -->
+
+    <div id="app"></div>
+
+
+
+
+    <script type="text/babel">
+
+        // jsx 每一个标签都必须闭合，单标签可以自闭合
+
+        let imgUrl = "http://www.ujiuye.com/statics/images/xibaopcimages/logo.png";
+        let web = "http://www.ujiuye.com"
+
+        let webs = [{
+            url:"http://www.ujiuye.com",
+            title:"ujiuye"
+        },{
+            url:"https://www.baidu.com",
+            title:"百度"
+        }]
+
+        // 普通属性写法
+
+        // 结合列表渲染
+
+        // class 写成 className
+        // label标签 for 写成 htmlFor 
+        let el = (<h1 id="box">
+            <img src={imgUrl} alt="" />
+            <a  class="red" href={web}>ujiuye</a>
+
+            <div>
+                {
+                    webs.map((item,i)=>{
+                        return(
+                            <p key={i}><a href={item.url}>{item.title}</a></p>
+                        )
+                    })
+                }
+            </div>
+        </h1>);
+        console.log(el);
+
+        // 3.将虚拟DOM渲染到页面中
+        ReactDOM.render(el, document.getElementById("app"));
+    </script>
+</body>
+
+</html>

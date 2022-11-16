@@ -1,0 +1,25 @@
+<!-- 
+
+    建立git 远程仓库
+        通过git分享代码或者与其他开发人员合作。就需要将数据放到一台其他开发人员能够连接的服务器上
+        这里我们以github作为远程仓库
+
+    - 生成SSH key
+        由于本地git仓库和github仓库之间的传输是通过SSH加密的，所以我们需要配置验证信息，通过git命令生成SSH key
+        - ssh-keygen -t rsa -C 'youremail@example.com' 
+            - 后面的邮箱是在github上注册的邮箱
+            - 使用默认的一路回车
+                - 反馈结果
+                Your identification has been saved in /Users/xuhongtong/.ssh/id_rsa.
+                Your public key has been saved in /Users/xuhongtong/.ssh/id_rsa.pub.
+        - 使用vs code 打开 /xuhongtong/.ssh/id_rsa.pub.文件,复制其中的内容
+        - 在github-setting -sshkey中，粘贴复制的内容
+    
+    - 可以把电脑本地仓库的东西运到远程github网站了
+
+    - 在github上创建仓库repository
+    - 把已经存在的仓库上传到github中
+        在命令行中输入
+            git remote add origin https://github.com/henrychacha/demofortest.git
+            git push -u origin master
+ -->

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cls1{
+            background-color: skyblue;
+        }
+        .bg1{
+            background-color: pink;
+        }
+        .color1{
+            color:lightgreen;
+        }
+    </style>
+    <!-- 1加载引入vue 核心文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 2.创建一个容器 -->
+    <div id="app">
+        <p style="font-size: 30px;color:red">行间样式</p>
+        <!-- 语法：
+            v-on:事件类型名="事件处理函数",
+            可以加 ()
+            -->
+        <p :style="{color:'red',fontSize:ft+'px'}" v-on:click="fn">动态style</p>
+        <p :style="{color:'red',fontSize:ft+'px'}" v-on:click="fn()">动态style</p>
+        <p :style="{color:'red',fontSize:ft+'px'}" v-on:click="ft+=5">动态style</p>
+
+            <!-- @ :v-on: 的语法糖简写模式 -->
+        <p :style="{color:'red',fontSize:ft+'px'}" @click="ft+=5">动态style</p>
+    </div>
+    <script>
+        // 3.实例化vue 根组件
+
+        // Vue函数接受一个配置对象作为参数
+        let vm = new Vue({
+            el: "#app",//element：指定挂载（mount）元素
+            // data： 数据对象
+            data: {
+                ft:30,
+            },
+            // 事件处理函数定义在methods 中
+            methods:{
+                fn(){
+                    console.log("1");
+                    // this.ft = this.ft + 5;
+                    this.ft += 5;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

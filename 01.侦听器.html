@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p><input type="text" v-model="msg" @input="fn"><span class="red" v-show="seen">输入内容不符合</span></p>
+        <p><input type="text" v-model="msg1" @keydown.enter="fn1"></p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"",
+                msg1:"",
+                seen:false
+            },
+            methods: {
+                fn(){
+                    console.log(this.msg);
+                    this.judge();
+                },
+                fn1(){
+                    this.msg = this.msg1;
+                    this.judge();
+                },
+                judge(){
+                    if(this.msg.length<2||this.msg.length>6){
+                        this.seen = true;
+                    }else{
+                        this.seen = false;
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>

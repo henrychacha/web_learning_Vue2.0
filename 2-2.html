@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-for="item in arr">{{item}}</p>
+        <button @click="fn">修改</button>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                arr:[1,2,3]
+            },
+            methods: {
+                fn(){
+                    // vue 不能监听到 引用数据类型的直接变化
+
+                    // 2.  使用js 的数组操作 j s 数组操作
+                    
+                    this.arr.splice(1,1,10);
+
+                    
+
+
+
+
+                }
+            },
+        })
+    </script>
+</body>
+</html>

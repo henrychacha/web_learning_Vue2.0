@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1.引入文件 -->
+    <!-- 核心库 -->
+    <script src="./react.development.js"></script>
+    <!-- DOM 操作相关，和虚拟dom 相关 -->
+    <script src="./react-dom.development.min.js"></script>
+    <!--  转义jsx 语法 -->
+    <script src="./babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 2.创建容器 -->
+
+    <div id="app"></div>
+
+
+
+
+    <script type="text/babel">
+
+
+        //  type text/babel 声明内部使用的是jsx 语法
+
+
+        let score = 90;
+
+        /* function  showScore(){
+            if(score>=90){
+                return <i>优秀</i>
+            }else if(score>70){
+                return <i>良好</i>
+            }else if(score>60){
+                return <i>合格</i>
+            }else{
+                return <i>不合格</i>
+            }
+        } */
+
+        function showScore() {
+            let el = null;
+            if (score >= 90) {
+                el = <i>优秀</i>
+            } else if (score > 70) {
+                el = <i>良好</i>
+            } else if (score > 60) {
+                el = <i>合格</i>
+            } else {
+                el = <i>不合格</i>
+            }
+            return el;
+        }
+
+        // 使用运算符
+        let flag = true;
+
+        // 执行函数
+
+        // {} 不允许写流程控制
+        let el = (<h1 id="box">
+            <span>{1 + 1}</span>
+            <span>{flag && <i>show</i>}</span>
+
+            <span>{flag ? <i>show</i> : null}</span>
+            <span>{showScore()}</span>
+        </h1>);
+        console.log(el);
+
+        // 3.将虚拟DOM渲染到页面中
+        ReactDOM.render(el, document.getElementById("app"));
+    </script>
+</body>
+
+</html>

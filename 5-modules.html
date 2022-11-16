@@ -1,0 +1,21 @@
+<!-- 
+    store文件夹中新建module文件夹
+    模块化处理，把两个不同的业务块抽离出去
+    公共分区
+    单独模块
+
+    state的获取会受到影响，不能再用...mapState来获取了，要用 函数return this.$store.state.Obj.data1
+    mutation不会受到影响
+
+    共有的和模块的mutation方法如果同名，就都会触发；但是如果
+
+    如果需要某个模块有更高的封装性(外层无法调用模块内的方法)和复用性，可以试着添加命名空间
+
+    ...mapMutation({add:'Obj/add'})
+    并且还要添加 namespace：true
+
+    action也是如此
+
+    可以把store文件夹中建立index.js   actions.js  mutation.js  getters.js module文件夹，这些文件专门放公共的各类，然后在index.js中集中暴露
+
+ -->

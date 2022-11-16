@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border:3px gold dashed;
+        }
+        .outer .inner{
+            width: 50px;
+            height: 50px;
+            background-color: skyblue;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 可以监听对应按键的键盘事件 -->
+        <input type="text" @keydown.tab="fn">
+        <input type="text" @keydown.9="fn">
+    </div>
+    <script>
+        /*
+        // 别名
+           1) .enter：回车键
+         2)  .tab：制表键
+         3) .delete：含delete和backspace键
+         4) .esc：返回键
+         5) .space: 空格键
+         6) .up：向上键
+         7) .down：向下键
+         8) .left：向左键
+         9) .right：向右键
+
+
+    // keyCode 也可以作为事件修饰符
+        */ 
+
+        let vm = new Vue({
+            el:"#app",
+            data:{
+               
+            },
+            methods:{
+                fn(e){
+                    console.log(e.keyCode)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .selected{
+            color:skyblue
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 可以监听对应按键的键盘事件:
+            number: 将输入值从默认的字符串转化为number 类型
+        -->
+        <input type="text" v-model.number="text" >
+        <p>{{text+1}}</p>
+    </div>
+    <script>
+
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                // 
+                text:"abc"
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

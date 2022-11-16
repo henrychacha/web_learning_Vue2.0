@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-for="item in arr">{{item}}</p>
+        <button @click="fn">修改</button>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                // 3.数据变成对象属性
+                arr:[1,2,3]
+            },
+            methods: {
+                fn(){
+                    
+                    // 4. 
+                    // @param1:需要变更的引用数据类型
+                    // @param2: key 或者是索引
+                    // @param3: 变更后的值
+                    // this.$set(this.arr,1,10);
+
+                    Vue.set(this.arr,1,10);
+
+                    
+
+
+
+
+                }
+            },
+        })
+    </script>
+</body>
+</html>

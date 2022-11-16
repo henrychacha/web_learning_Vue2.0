@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        // 中文注释
+        "target":"ES3",
+        "module": "system",//模块化
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir": "./dist",//输出目录
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true//为装饰器提供元数据的支持
+    },
+    //需要编译的目录
+    "include": [
+        "src/**/*"
+    ],
+    // 配出编译的目录
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

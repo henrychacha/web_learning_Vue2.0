@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{d|date}}</p>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                d:Date.now()
+            },
+            filters:{
+                date(val){
+                    console.log(val);
+                    let d = new Date(val);
+                    
+                    let year = d.getFullYear(),
+                        month = d.getMonth()+1+"",
+                        day = d.getDate()+"";
+
+                    return `${year}-${month.padStart(2,"0")}-${day.padStart(2,"0")}`
+                    
+                }
+            }
+        });
+
+        let str = "12";
+
+        console.log(str.padStart(2,"0"))
+
+    </script>
+</body>
+</html>

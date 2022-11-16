@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .selected {
+            color: skyblue
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 可以监听对应按键的键盘事件:
+            number: 将输入值从默认的字符串转化为number 类型
+        -->
+        <input type="text" v-model.number="num1">
+        <select v-model="symbol">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" v-model.number="num2">
+        <button @click="sum">=</button>
+        <p> 结果-{{result}}</p>
+    </div>
+    <script>
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                // 输入框1
+                num1: "",
+                // 输入框2
+                num2: "",
+                // 计算结果
+                result: "",
+                // 运算符
+                symbol: "+"
+            },
+            methods: {
+                sum() {
+                    // 通过运算符 value 来判断运算方法
+                    switch (this.symbol) {
+                        case "+":
+                            this.result = this.num1 + this.num2;
+                            break;
+                        case "-":
+                            this.result = this.num1 - this.num2;
+                            break;
+                        case "*":
+                            this.result = this.num1 * this.num2;
+                            break;
+                        case "/":
+                            this.result = this.num1 / this.num2;
+                            break;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
